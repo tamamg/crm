@@ -24,7 +24,9 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
     devFlagPlugin,
-    new ExtractTextPlugin('app.css')
+    new ExtractTextPlugin('app.css'),
+    new ExtractTextPlugin('bootstrap.css'),
+    new ExtractTextPlugin('sidebar.css')
   ],
   module: {
     loaders: [

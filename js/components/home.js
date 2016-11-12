@@ -6,7 +6,7 @@ import styles from '../../css/app.css';
 
 class Home extends Component {
   render() {
-    const {title, dispatch} = this.props;
+    const {title, dispatch } = this.props;
     const actions = bindActionCreators(HomeActions, dispatch);
     return (
       <main>
