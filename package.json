@@ -12,6 +12,7 @@
     "lodash": "^4.16.6",
     "react": "^0.14.0",
     "react-bootstrap": "^0.30.6",
+    "react-bootstrap-select": "^0.14.0",
     "react-dom": "^0.14.0",
     "react-redux": "^4.0.0",
     "react-router": "^2.0.1",

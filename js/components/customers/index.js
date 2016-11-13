@@ -13,18 +13,21 @@ function mapStateToProps(state) {
   };
 }
 
-class CustomersSection extends Component {
+class CustomersSidebar extends Component {
   render() {
     let { customers } = this.props;
+    let linkStyle = {
+      fontSize: 18, display: 'block', textAlign: 'center',
+      marginTop: 20, marginBottom: 20, backgroundColor: 'grey',
+      borderRadius: 4
+    };
     return (
       <div className={ styles.customers }>
-        <Button style={{ display: 'block', marginTop: 40, marginLeft: 'auto', marginRight: 'auto' }} bsStyle="primary">
-          <Link style={{ fontSize: 18 }} to={`/customer/new`} > New Customer </Link>
-        </Button>
+        <Link style={ linkStyle } to={`/customer/new`} > New Customer </Link>
         <CustomersList customers={ customers }/>
       </div>
     );
   }
 }
 
-export default connect(mapStateToProps)(CustomersSection);
+export default connect(mapStateToProps)(CustomersSidebar);

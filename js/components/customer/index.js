@@ -13,13 +13,11 @@ function mapStateToProps(state) {
 class Customer extends Component {
   render() {
     let { params : { customerId }, customers } = this.props;
-    console.log('customers', customers)
     let customer = customers.filter(cust => cust.id === customerId)[0];
-    var name, age, birthday, gender;
+    let name, age, gender;
     if (customer) {
       name = customer.name;
       age = customer.age;
-      birthday = customer.birthday;
       gender = customer.gender;
     }
 
@@ -32,12 +30,9 @@ class Customer extends Component {
         <div>
           Age: { age }
         </div>
-        {/*<div>*/}
-          {/*Birthday: { birthday }*/}
-        {/*</div>*/}
-        {/*<div>*/}
-          {/*Gender: { gender }*/}
-        {/*</div>*/}
+        <div>
+          Gender: { gender === 'male' ? 'Male' : 'Female' }
+        </div>
       </div>
     );
   }

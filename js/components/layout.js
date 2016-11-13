@@ -1,23 +1,35 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import styles from '../../css/app.css';
-import CustomersSection from './customers';
+import CustomersSidebar from './customers';
+import { connect } from 'react-redux';
 
-export default class Layout extends Component {
+function mapStateToProps(state) {
+  return {
+    company: state.company
+  };
+}
+
+class Layout extends Component {
   render () {
-    const { main, params, customers } = this.props;
-    // let customerId = params.customerId ? params.customerId : null;
-    // let customer = customers.filter(customer => customerId === customer.id)[0];
+    const { main, company } = this.props;
 
     return (
       <div className={ styles.crm }>
         <div className={ styles.header }>
-          { 'sdsdsds' }
+          { company.brandName }
         </div>
         <div className={ styles.main }>
-          <CustomersSection/>
+          <CustomersSidebar/>
           { main }
         </div>
        </div>
     )
   }
 }
+
+Layout.propTypes = {
+  main: PropTypes.element,
+  company: PropTypes.object
+};
+
+export default connect(mapStateToProps)(Layout)

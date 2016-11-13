@@ -18,20 +18,16 @@ const store = configureStore();
 export default React.createClass({
   render() {
     let { customers } = store.getState();
-    console.log('@@@@', store.getState())
+    let toCustomer = customers.length > 0 ? customers[0].id : 'new';
 
-    let toCustomer = customers.size > 0 ? customers[0].id : 'new';
-    // {/*<Redirect from="/" to="/customers"/>*/}
-    // {/*<Redirect from="customers" to={ `/customers/${toCustomer}` }/>*/}
-    // {/*<Route path="/customers/:customerId" component={ IndexComponent }/>*/}
-    // {/*<Route path="/customer/new" component={ NewCustomer }/>*/}
     return (
         <Provider store={ store }>
           <Router history={ browserHistory }>
+            <Redirect from="/" to={ `/customers` } />
             <Route component={ Layout }>
-              <Redirect from="/customers" to={ `/customers/${toCustomer}` }/>
-              <Route path="/customers/:customerId" components={{ main: Customer }}/>
-              <Route path="/customer/new" components={{ main: NewCustomer }} />
+              <Redirect from="customers" to={ `/customers/${toCustomer}` }/>
+              <Route path="customers/:customerId" components={{ main: Customer }}/>
+              <Route path="customer/new" components={{ main: NewCustomer }} />
             </Route>
           </Router>
         </Provider>
