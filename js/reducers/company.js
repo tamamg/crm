@@ -1,5 +1,3 @@
-import * as ActionTypes from '../constants/ActionTypes';
-import { List } from 'immutable'
 let defaultState = {
   brandName: 'Recongate'
 };
