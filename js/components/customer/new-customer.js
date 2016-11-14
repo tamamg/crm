@@ -6,12 +6,6 @@ import { FormControl, DropdownButton, MenuItem } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 import { addCustomer } from '../../actions/customers/add';
 
-function mapStateToProps(state) {
-  return {
-    customers: state.customers
-  };
-}
-
 class NewCustomer extends Component {
   constructor(props) {
     super(props);
@@ -61,4 +55,4 @@ class NewCustomer extends Component {
   }
 }
 
-export default connect(mapStateToProps)(NewCustomer);
+export default connect(({ customers }) => ({ customers } ))(NewCustomer);

@@ -1,17 +1,8 @@
 import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
-import * as HomeActions from '../../actions/HomeActions';
 import styles from '../../../css/app.css';
 import { connect } from 'react-redux';
-import { Button } from 'react-bootstrap';
 import CustomersList from './list';
 import { Link } from 'react-router'
-
-function mapStateToProps(state) {
-  return {
-    customers: state.customers
-  };
-}
 
 class CustomersSidebar extends Component {
   render() {
@@ -30,4 +21,4 @@ class CustomersSidebar extends Component {
   }
 }
 
-export default connect(mapStateToProps)(CustomersSidebar);
+export default connect(({ customers }) => ({ customers }))(CustomersSidebar);

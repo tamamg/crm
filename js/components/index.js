@@ -1,6 +1,4 @@
-import React, {Component} from 'react';
-import {bindActionCreators} from 'redux';
-import * as HomeActions from '../actions/HomeActions';
+import React, { Component } from 'react';
 import styles from '../../css/app.css';
 import { connect } from 'react-redux';
 import CustomersSection from './customers';

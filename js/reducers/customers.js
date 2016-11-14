@@ -9,7 +9,6 @@ let defaultState =  [
 
 
 export function customers(state = defaultState, { type, payload }) {
-  console.log('####', type, payload)
   switch (type) {
     case ADD_CUSTOMER:
       return [ ...state, new Customer().parse(payload.customer) ];

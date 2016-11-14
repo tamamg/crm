@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
-import {bindActionCreators} from 'redux';
+import React, { Component, PropTypes } from 'react';
 import styles from '../../../css/app.css';
 import { connect } from 'react-redux';
 import { Button } from 'react-bootstrap';
+import { deleteCustomer } from '../../actions/customers/delete';
 
 function mapStateToProps(state) {
   return {
@@ -11,6 +11,12 @@ function mapStateToProps(state) {
 }
 
 class Customer extends Component {
+
+  delete() {
+    let { params : { customerId }, dispatch } = this.props;
+    dispatch(deleteCustomer(customerId));
+  }
+
   render() {
     let { params : { customerId }, customers } = this.props;
     let customer = customers.filter(cust => cust.id === customerId)[0];
@@ -25,7 +31,7 @@ class Customer extends Component {
       <div className={ styles.customer }>
         <div>
           <span className={ styles.name }>{ name } </span>
-          <Button bsStyle="link">Delete Customer</Button>
+          <Button onClick={ this.delete.bind(this) } bsStyle="link">Delete Customer</Button>
         </div>
         <div>
           Age: { age }
@@ -38,4 +44,12 @@ class Customer extends Component {
   }
 }
 
-export default connect(mapStateToProps)(Customer);
+Customer.propTypes = {
+  customers: PropTypes.array
+};
+
+Customer.defaultProps = {
+  customers: []
+}
+
+export default connect(({ customers }) => ({ customers }))(Customer);

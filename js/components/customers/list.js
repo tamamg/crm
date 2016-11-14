@@ -20,3 +20,7 @@ export default class CustomersList extends Component {
 CustomersList.propTypes = {
   customers: PropTypes.array
 };
+
+CustomersList.defaultProps = {
+  customers: []
+};

@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import styles from '../../../css/app.css';
+import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router'
 
 export default class Customer extends Component {
@@ -12,3 +11,7 @@ export default class Customer extends Component {
     );
   }
 }
+
+Customer.propTypes = {
+  customer: PropTypes.object
+};
