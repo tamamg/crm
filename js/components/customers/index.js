@@ -2,23 +2,28 @@ import React, { Component } from 'react';
 import styles from '../../../css/app.css';
 import { connect } from 'react-redux';
 import CustomersList from './list';
-import { Link } from 'react-router'
+import { Link } from 'react-router';
+import { Button } from 'react-bootstrap';
 
 class CustomersSidebar extends Component {
+
+  navigateNewCustomer() {
+    this.props.history.push('/customer/new');
+  }
+
   render() {
     let { customers } = this.props;
-    let linkStyle = {
-      fontSize: 18, display: 'block', textAlign: 'center',
-      marginTop: 20, marginBottom: 20, backgroundColor: 'grey',
-      borderRadius: 4
+    let buttonStyle = {
+      fontSize: 18, display: 'block',
+      marginTop: 20, marginBottom: 20, marginLeft: 'auto', marginRight: 'auto'
     };
     return (
       <div className={ styles.customers }>
-        <Link style={ linkStyle } to={`/customer/new`} > New Customer </Link>
+        <Button  style={ buttonStyle } onClick={ this.navigateNewCustomer.bind(this) } bsStyle="primary">New Customer</Button>
         <CustomersList customers={ customers }/>
       </div>
     );
   }
 }
 
-export default connect(({ customers }) => ({ customers }))(CustomersSidebar);
+export default connect(({ customers: { list} }) => ({ customers: list }))(CustomersSidebar);

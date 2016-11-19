@@ -11,7 +11,7 @@ function mapStateToProps(state) {
 
 class Layout extends Component {
   render () {
-    const { main, company } = this.props;
+    const { main, company, history } = this.props;
 
     return (
       <div className={ styles.crm }>
@@ -19,7 +19,7 @@ class Layout extends Component {
           { company.brandName }
         </div>
         <div className={ styles.main }>
-          <CustomersSidebar/>
+          <CustomersSidebar history={ history } />
           { main }
         </div>
        </div>

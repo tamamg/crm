@@ -5,8 +5,7 @@ import CustomersSection from './customers';
 
 function mapStateToProps(state) {
   return {
-    company: state.company,
-    customers: state.customers
+    company: state.company
   };
 }
 

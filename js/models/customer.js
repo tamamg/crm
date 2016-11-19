@@ -6,7 +6,8 @@ var CustomerFields = Immutable.Record({
   name: null,
   age: 0,
   birthday: null,
-  gender: 'male'
+  gender: 'male',
+  imageUrl: null
 });
 
 
@@ -22,7 +23,7 @@ export class Customer extends CustomerFields {
     var fields = {};
 
     [
-      'id', 'name', 'age', 'birthday', 'gender'
+      'id', 'name', 'age', 'birthday', 'gender', 'imageUrl'
     ].forEach(field =>
       fields[field] = (data[field] !== undefined) ? data[field] : this.get(field)
     );

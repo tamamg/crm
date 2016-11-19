@@ -1,22 +1,23 @@
-html,
-body {
+html, body {
   height: 100%;
   margin: 0;
 }
 
-.crm {
-  //margin: 15px;
-}
 .text {
   font-size: 2rem;
   line-height: 1.5;
   color: #FF0000;
+  font-family: 'Open Sans';
 }
 
 .header {
   font-size: 18px;
   line-height: 44px;
   border-bottom: 2px solid #eee;
+  margin-left: 15px;
+  font-family: 'Open Sans';
+  font-weight: 700;
+
 }
 
 .main {
@@ -26,26 +27,33 @@ body {
 .name {
   font-size: 18px;
   line-height: 44px;
+    font-family: 'Open Sans';
 }
 
 .customers {
-  width: 30%;
+  width: 40%;
   position: absolute;
   top: 44px;
   bottom: 0;
   border-right: 2px solid #eee;
+  padding: 0 15px;
 }
 
 .customer {
-  width: 70%;
+  width: 60%;
   position: absolute;
   top: 44px;
   right: 0;
   bottom: 0;
+  padding: 0 15px;
 }
 
-.list {
+.save {
+  margin-top: 15px;
+}
 
+input {
+  margin: 15px 0;
 }
 
 /*!

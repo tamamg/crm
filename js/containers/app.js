@@ -1,17 +1,17 @@
 import React from 'react';
 import { Router, Route, Redirect, browserHistory } from 'react-router';
 import {Provider} from 'react-redux';
-import configureStore from '../store/index';
+import { initializeStore } from '../store';
 import Customer from '../components/customer/index';
 import NewCustomer from '../components/customer/new-customer';
 import Layout from '../components/layout';
 
-const store = configureStore();
+const store = initializeStore();
 
 export default React.createClass({
   render() {
-    let { customers } = store.getState();
-    let toCustomer = customers.length > 0 ? customers[0].id : 'new';
+    let { customers: { list } } = store.getState();
+    let toCustomer = list.length > 0 ? list[0].id : 'new';
 
     return (
         <Provider store={ store }>

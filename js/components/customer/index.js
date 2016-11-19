@@ -13,18 +13,23 @@ function mapStateToProps(state) {
 class Customer extends Component {
 
   delete() {
-    let { params : { customerId }, dispatch } = this.props;
-    dispatch(deleteCustomer(customerId));
+    let { params : { customerId }, customers, dispatch } = this.props;
+    dispatch(deleteCustomer(customerId)).then(data => {
+      customers = customers.filter(customer => customer.id !== customerId);
+      let path = customers.length > 0 ? `/customers/${customers[0].id}` : 'customer/new';
+      this.props.history.push(path);
+    });
   }
 
   render() {
     let { params : { customerId }, customers } = this.props;
     let customer = customers.filter(cust => cust.id === customerId)[0];
-    let name, age, gender;
+    let name, age, gender, imageUrl;
     if (customer) {
       name = customer.name;
       age = customer.age;
       gender = customer.gender;
+      imageUrl = customer.imageUrl;
     }
 
     return (
@@ -33,11 +38,14 @@ class Customer extends Component {
           <span className={ styles.name }>{ name } </span>
           <Button onClick={ this.delete.bind(this) } bsStyle="link">Delete Customer</Button>
         </div>
-        <div>
-          Age: { age }
-        </div>
-        <div>
-          Gender: { gender === 'male' ? 'Male' : 'Female' }
+        <img style={{ width: 70, height: 70, marginRight: 15 }} src={ imageUrl } />
+        <div style={{ display: 'inline-block' }}>
+          <div>
+            Age: { age }
+          </div>
+          <div>
+            Gender: { gender === 'male' ? 'Male' : 'Female' }
+          </div>
         </div>
       </div>
     );
@@ -52,4 +60,4 @@ Customer.defaultProps = {
   customers: []
 }
 
-export default connect(({ customers }) => ({ customers }))(Customer);
+export default connect(({ customers: { list } }) => ({ customers: list }))(Customer);
